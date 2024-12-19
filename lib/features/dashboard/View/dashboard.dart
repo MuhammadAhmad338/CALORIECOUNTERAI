@@ -1,10 +1,9 @@
-import 'package:calorie_counter_ai/Widget/daily_goal_widget.dart';
-
 import '../../../utils/colors.dart';
 import 'package:flutter/material.dart';
 import '../../../Widget/meal_banner_widget.dart';
 import 'package:calorie_counter_ai/utils/const.dart';
 import 'package:calorie_counter_ai/Widget/nutrition_widget.dart';
+import 'package:calorie_counter_ai/Widget/daily_goal_widget.dart';
 import 'package:calorie_counter_ai/Widget/premium_banner_widget.dart';
 import 'package:calorie_counter_ai/Widget/add_meal_and_confirm_image_button.dart';
 
@@ -77,15 +76,10 @@ class DashboardScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Positioned(
-                bottom: -30,
-                left: 0,
-                right: 0,
-                child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 20.0),
-                  child: AddMealButton(
-                    buttonText: Const.addMealButton,
-                  ),
+              const Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 20.0),
+                child: AddMealButton(
+                  buttonText: Const.addMealButton,
                 ),
               ),
             ],
