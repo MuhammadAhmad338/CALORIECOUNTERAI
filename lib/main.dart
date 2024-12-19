@@ -15,13 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: Const.appname,
-      debugShowCheckedModeBanner: false,
-      initialBinding: InitialbindingsImplementation(),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const DashboardScreen()); 
+        title: Const.appname,
+        debugShowCheckedModeBanner: false,
+        initialBinding: InitialbindingsImplementation(),
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const DashboardScreen());
   }
 }
