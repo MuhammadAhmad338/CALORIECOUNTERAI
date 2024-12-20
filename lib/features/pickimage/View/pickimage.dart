@@ -23,24 +23,35 @@ class PickImageScreen extends StatelessWidget {
               SizedBox.expand(
                 child: CameraPreview(controller.cameraController),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 60),
+              Padding(
+                padding: const EdgeInsets.only(top: 60),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
+                    const Text(
                       Const.cameraViewTEXT1,
                       style: TextStyle(
                         color: CColors.whiteColor,
                         fontSize: 20,
                       ),
                     ),
-                    Text(
-                      Const.cameraViewTEXT2,
-                      style: TextStyle(
-                        color: CColors.whiteColor,
-                        fontSize: 20,
-                      ),
+                    Row(
+                      children: [
+                        const Text(Const.cameraViewTEXT2,
+                            style: TextStyle(
+                              color: CColors.whiteColor,
+                              fontSize: 20,
+                            )),
+                        const SizedBox(
+                          width: 7,
+                        ),
+                        Image.asset(
+                          Const.iconImage1,
+                          color: Colors.white,
+                          width: 27,
+                          height: 27,
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -55,7 +66,7 @@ class PickImageScreen extends StatelessWidget {
                       final imagePath = await controller.captureImage();
                       if (imagePath != null) {
                         // Navigate to the next screen and pass the image path
-                        Get.to(() => ConfirmImageScreen(imagePath: imagePath));
+                        Get.off(() => ConfirmImageScreen(imagePath: imagePath));
                       } else {
                         Get.snackbar(
                           "Error",

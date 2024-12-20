@@ -1,9 +1,10 @@
 import 'dart:io';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../pickedimage/View/pickedImage.dart';
 import 'package:calorie_counter_ai/utils/const.dart';
 import 'package:calorie_counter_ai/utils/colors.dart';
-import 'package:calorie_counter_ai/Widget/add_meal_and_confirm_image_button.dart';
-
+import 'package:calorie_counter_ai/features/pickimage/View/pickimage.dart';
 
 class ConfirmImageScreen extends StatelessWidget {
   final String imagePath;
@@ -12,6 +13,7 @@ class ConfirmImageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CColors.whiteColor,
   body: SafeArea(
     child: Center(
       child: Column(
@@ -28,14 +30,10 @@ class ConfirmImageScreen extends StatelessWidget {
               height: 300,
               width: 330,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0), // Rounded corners
-                border: Border.all(
-                  color: Colors.grey.shade300, // Optional border color
-                  width: 2.0,
-                ),
+                borderRadius: BorderRadius.circular(26.0), // Rounded corners
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(30.0), // Match the border radius
+                borderRadius: BorderRadius.circular(26.0), // Match the border radius
                 child: Image.file(
                   File(imagePath),
                   fit: BoxFit.cover, // Ensures the image scales to fit nicely
@@ -55,7 +53,7 @@ class ConfirmImageScreen extends StatelessWidget {
          const SizedBox(height: 40,),
          Padding(
            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-           child: ConfirmCapturedImage(
+           child: BarcodeCapturedImage(
              buttonText: Const
                  .confirmCapturedImageButton,
                  imagePath: imagePath,
@@ -67,6 +65,50 @@ class ConfirmImageScreen extends StatelessWidget {
     ),
   ),
 );
+  }
+}
+
+
+class BarcodeCapturedImage extends StatelessWidget {
+  final String buttonText;
+  final String imagePath;
+  const BarcodeCapturedImage({Key? key, required this.buttonText, required this.imagePath}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // final PickImageController dashboardController = Get.find<PickImageController>();
+    return Container(
+      margin: const EdgeInsets.all(12),
+      height: 50,
+      width: 300,
+      decoration: BoxDecoration(
+        color: CColors.greenColor, // Green background color
+        borderRadius: BorderRadius.circular(30), // Rounded corners
+      ),
+      child: TextButton.icon(
+        onPressed: () {
+          // Action when button is pressed
+          // print("Add New Meal Button Pressed!");
+        Get.off(() =>  PickedImageScreen(imagePath: imagePath,));
+        },
+        icon: const Icon(
+           Icons.qr_code_scanner_outlined, // Replace with your desired icons,
+          color: CColors.whiteColor,
+        ),
+        label:  Text(
+          buttonText,
+          style: const TextStyle(
+            color: CColors.whiteColor,
+            fontSize: 18,
+          ),
+        ),
+        style: TextButton.styleFrom(
+          foregroundColor: CColors.whiteColor, // Icon/Text color
+          padding: const EdgeInsets.symmetric(horizontal: 24), // Button padding
+          alignment: Alignment.center,
+        ),
+      ),
+    );
   }
 }
 
@@ -132,13 +174,13 @@ class IconTextButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             shape: const CircleBorder(),
             padding: const EdgeInsets.all(30.0),
-            backgroundColor: Colors.grey.shade100, // Light background color
+            backgroundColor: CColors.greyColor.withOpacity(0.09), // Light background color
             elevation: 0,
           ),
           child: Icon(
             icon,
             size: 30.0,
-            color: CColors.blackColor,
+            color: CColors.greenColor,
           ),
         ),
         const SizedBox(height: 8.0), // Spacing between icon and text
@@ -157,7 +199,7 @@ class IconTextButton extends StatelessWidget {
 }
 
 class ActionsRow extends StatelessWidget {
-  const ActionsRow({Key? key}) : super(key: key);
+  const ActionsRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -165,10 +207,12 @@ class ActionsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         IconTextButton(
+          
           icon: Icons.refresh,
           text: "Επανάληψη\nΦωτογραφίας",
           onPressed: () {
             // Add your logic here
+            Get.off(() => const PickImageScreen());
           },
         ),
         IconTextButton(
@@ -176,9 +220,12 @@ class ActionsRow extends StatelessWidget {
           text: "Προσθήκη άλλου\nπιάτου γεύματος",
           onPressed: () {
             // Add your logic here
+               Get.off(() => const PickImageScreen());
           },
         ),
       ],
     );
   }
 }
+
+

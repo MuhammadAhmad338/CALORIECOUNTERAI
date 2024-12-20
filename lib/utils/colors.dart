@@ -8,4 +8,5 @@ class CColors {
   static const purpleColor = Colors.purple;
   static const yellowColor = Colors.yellow;
   static const blueColor = Colors.blue;
+  static const greyColor = Colors.grey;
 }

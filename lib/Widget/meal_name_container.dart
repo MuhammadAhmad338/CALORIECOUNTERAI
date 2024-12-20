@@ -11,24 +11,24 @@ class MealNameContainer extends StatelessWidget {
     
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       decoration: BoxDecoration(
-        color: CColors.whiteColor,
+        color: CColors.greyColor.withOpacity(0.09),
         borderRadius: BorderRadius.circular(12.0),
       ),
-      child: Row(
+      child:  Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
+         const  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 Const.mealContainerText1,
                 style: TextStyle(
                   fontSize: 14.0,
-                  color: Colors.grey[600],
+                  color: CColors.blackColor,
                 ),
               ),
-              const SizedBox(height: 4.0),
-             const   Text(
+               SizedBox(height: 4.0),
+               Text(
                 Const.mealContainerText2,
                 style: TextStyle(
                   fontSize: 18.0,
@@ -38,10 +38,29 @@ class MealNameContainer extends StatelessWidget {
               ),
             ],
           ),
-          const Icon(
-            Icons.edit,
-            color: CColors.greenColor,
-          ),
+           Container(
+            padding: EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: CColors.greenColor.withOpacity(0.1),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.withOpacity(0.1),
+                  //     spreadRadius: 1,
+                  //     blurRadius: 3,
+                  //     offset: Offset(0, 1),
+                  //   ),
+                  // ],
+                ),
+                child: 
+                
+                   Icon(
+                    Icons.edit_outlined,
+                    color: CColors.greenColor,
+                    size: 20,
+                  ),
+                ),
+              
         ],
       ),
     );

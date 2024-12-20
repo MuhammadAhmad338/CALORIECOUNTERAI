@@ -1,8 +1,11 @@
+import 'package:calorie_counter_ai/features/dashboard/View/dashboard.dart';
 import 'package:calorie_counter_ai/features/pickedimage/View/pickedimage.dart';
 import 'package:get/get.dart';
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_counter_ai/features/pickimage/View/pickimage.dart';
+
+import '../utils/const.dart';
 
 class AddMealButton extends StatelessWidget {
   final String buttonText;
@@ -48,10 +51,10 @@ class AddMealButton extends StatelessWidget {
 }
 
 
-class ConfirmCapturedImage extends StatelessWidget {
+class TickCapturedImage extends StatelessWidget {
   final String buttonText;
   final String imagePath;
-  const ConfirmCapturedImage({Key? key, required this.buttonText, required this.imagePath}) : super(key: key);
+  const TickCapturedImage({Key? key, required this.buttonText, required this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +71,11 @@ class ConfirmCapturedImage extends StatelessWidget {
         onPressed: () {
           // Action when button is pressed
           // print("Add New Meal Button Pressed!");
-        Get.to(() =>  PickedImageScreen(imagePath: imagePath,));
+        Get.offAll(() =>  DashboardScreen());
         },
-        icon: const Icon(
-           Icons.qr_code_scanner, // Replace with your desired icons,
+        icon:  Image.asset(
+           Const.iconImage2, // Replace with your desired icons,
+           height: 30,
           color: CColors.whiteColor,
         ),
         label:  Text(

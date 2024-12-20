@@ -5,6 +5,8 @@ import 'package:calorie_counter_ai/Widget/nutrition_widget.dart';
 import 'package:calorie_counter_ai/Widget/meal_name_container.dart';
 import 'package:calorie_counter_ai/Widget/add_meal_and_confirm_image_button.dart';
 
+import '../../../utils/colors.dart';
+
 class PickedImageScreen extends StatelessWidget {
   final String imagePath;
   const PickedImageScreen({super.key, required this.imagePath});
@@ -12,13 +14,14 @@ class PickedImageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CColors.whiteColor,
       body: SafeArea(
         child: Stack(
           children: [
             Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -34,7 +37,7 @@ class PickedImageScreen extends StatelessWidget {
                         Const
                             .capturedimagelabel, // Replace with Const.capturedimagelabel
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 14.5),
                       ),
                     ],
                   ),
@@ -43,17 +46,12 @@ class PickedImageScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Container(
                     height: 170,
-                    width: 170,
+                    width: 160,
                     decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(30.0), // Rounded corners
-                      border: Border.all(
-                        color: Colors.grey.shade300, // Optional border color
-                        width: 2.0,
-                      ),
+                      borderRadius: BorderRadius.circular(16.0), // Rounded corners                     
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0), // Match the border radius
+                      borderRadius: BorderRadius.circular(16.0), // Match the border radius
                       child: Image.file(
                         File(imagePath),
                         fit: BoxFit.cover, // Ensures the image scales to fit nicely
@@ -76,7 +74,7 @@ class PickedImageScreen extends StatelessWidget {
               right: 0,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: ConfirmCapturedImage(
+                child:  TickCapturedImage(
                   buttonText: Const.confirmImageTextbutton,
                   imagePath: imagePath,
                   // Replace with Const.confirmCapturedImageButton

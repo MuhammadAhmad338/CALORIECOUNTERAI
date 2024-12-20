@@ -21,4 +21,8 @@ class Const {
   static const dailygoalText2 = "Καθορίστε τον θερμιδικό στόχο ημέρας σας";
   static const mealContainerText1 = "Όνομα φαγητού";
   static const mealContainerText2 = "Αυγά";
+  static const premiumBanner = "Αναβαθμίστε σε Premium και\nκαταγράψτε καθημερινά τα γεύματά σας!";
+  static const iconImage2 = "assets/read.png";
+  static const iconImage1 = "assets/flash01.png";
+
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/colors.dart';
 
 class MealBannerWidget extends StatelessWidget {
   const MealBannerWidget({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class MealBannerWidget extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: CColors.whiteColor,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -30,17 +31,59 @@ class MealBannerWidget extends StatelessWidget {
               const Text(
                 'Αυγά με 2 φέτες ψωμί',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 22,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.edit,
-                  color: Colors.green,
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: CColors.greenColor.withOpacity(0.1),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.withOpacity(0.1),
+                  //     spreadRadius: 1,
+                  //     blurRadius: 3,
+                  //     offset: Offset(0, 1),
+                  //   ),
+                  // ],
+                ),
+                child: IconButton(
+                  padding: EdgeInsets.all(12),
+                  constraints: BoxConstraints(), // Removes default minimum size
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.edit_outlined,
+                    color: CColors.greenColor,
+                    size: 20,
+                  ),
                 ),
               ),
+              // IconButton(
+              //     padding: EdgeInsets.all(12),
+              //     color: CColors.whiteColor,
+              //     onPressed: () {},
+              //     icon: const Icon(
+              //       Icons.edit_outlined,
+              //       color: CColors.greenColor,
+              //     ),
+              //   ),
+              // Container(height: 20,
+              // color: CColors.blackColor,
+
+              // decoration: BoxDecoration(
+              //   borderRadius: BorderRadius.circular(12)
+              // ),
+              // child: Text("asdsd"),
+              // )
+              // Container(
+              // height: 20,
+              //   color: CColors.blackColor,
+              //   decoration: const BoxDecoration(
+              //     shape: BoxShape.circle
+              //   ),
+              //   // child:
+              // ),
             ],
           ),
 
@@ -51,15 +94,24 @@ class MealBannerWidget extends StatelessWidget {
               children: [
                 Text(
                   'Πρωτεΐνες: 30g  ',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600),
                 ),
                 Text(
                   'Υδατάνθρακες: 24g  ',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600),
                 ),
                 Text(
                   'Λιπαρά: 4,3g',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600),
                 ),
               ],
             ),
@@ -70,10 +122,11 @@ class MealBannerWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: const Color(0xFFE9FDF1), // Light green background
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Text(
                   'Θερμίδες: 326',
@@ -85,10 +138,11 @@ class MealBannerWidget extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: const Color(0xFFE9F1FD), // Light blue background
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Text(
                   'Πρωινό',

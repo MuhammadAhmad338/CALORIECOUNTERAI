@@ -8,74 +8,76 @@ class DailyGoalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
-      margin: const EdgeInsets.all(14.0),
-      padding: const EdgeInsets.all(14.0),
+      height: 280,
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(12.0),
+        color: CColors.greyColor.withOpacity(0.09),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Circular progress
-        // Circular progress
-    Stack(
-      alignment: Alignment.center,
-      children: [
-        // Outer circular progress indicator
-         // Circular progress  
-              SizedBox(
-                width: 150.0,
-                height: 150.0,
-                child: CircularProgressIndicator(
-                  value: 0.5, // Progress value (260 out of 520)
-                  strokeWidth: 20.0,
-                  color: CColors.greenColor,
-                  backgroundColor: Colors.grey.shade300,
-                ),
-              ),
-        // Center content
-        const Padding(
-          padding: EdgeInsets.all(12), // Add padding around the Column
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          // Circular progress
+          Stack(
+            alignment: Alignment.center,
             children: [
-              Text(
-                '260 από',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
-                  color: CColors.blackColor,
-                ),
-              ),
-              Text(
-                Const.dailygoalText1,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14.0,
-                  color: CColors.blackColor,
-                ),
+              // Outer circular progress indicator
+
+              // Circular progress
+              Container(
+                  width: 150.0, // Set the desired width (radius)
+                  height: 150.0, // Set the desired height (radius)
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                  child: CircularProgressIndicator(
+                    value: 1, // Progress value (260 out of 520)
+                    strokeWidth: 20.0,
+                    color: const Color.fromARGB(255, 74, 181, 78),
+                    backgroundColor: Colors.grey.shade300,
+                  )),
+              // Center content
+
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '260 από',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                      color: CColors.blackColor,
+                    ),
+                  ),
+                  Text(
+                    Const.dailygoalText1,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: CColors.blackColor,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-        ), 
-                ],
-              ),        
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 25.0),
           // Bottom text
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
             decoration: BoxDecoration(
-              color: CColors.whiteColor,
+              color: CColors.whiteColor.withOpacity(0.4),
               borderRadius: BorderRadius.circular(16.0),
-              border: Border.all(color: CColors.greenColor),
+              // border: Border.all(color: CColors.greenColor),
             ),
             child: const Text(
               Const.dailygoalText2,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 14.0,
+                fontSize: 15.0,
                 fontWeight: FontWeight.bold,
                 color: CColors.greenColor,
               ),
