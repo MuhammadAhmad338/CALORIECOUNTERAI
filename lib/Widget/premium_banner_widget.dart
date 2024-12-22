@@ -1,4 +1,5 @@
 import 'package:calorie_counter_ai/utils/const.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import '../utils/colors.dart';
 
@@ -41,63 +42,106 @@ class PremiumBanner extends StatelessWidget {
   }
 }
 
-class CreateAccountDialog extends StatelessWidget {
-  const CreateAccountDialog({super.key});
+class AccountRequiredBottomSheet extends StatelessWidget {
+  const AccountRequiredBottomSheet({Key? key}) : super(key: key);
+
+  void _launchURL(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor:CColors.whiteColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15), // Rounded corners
-      ),
-      title: const Text(
-        'Restricted Access',
-        style: TextStyle(
-          color: CColors.blackColor, // Modern black title color
-          fontWeight: FontWeight.w600, // A bit bolder
-          fontSize: 18,
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.3,
+      decoration: const BoxDecoration(
+        color: CColors.whiteColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
         ),
       ),
-      content: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 12),
-        child: Text(
-          'You need an account to access more features.',
-          style: TextStyle(
-            fontSize: 15,
-            color: CColors.blackColor, // Soft text color
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ),
-      actions: [
-        // Modern button to create account
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          decoration: BoxDecoration(
-            color: CColors.greenColor,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: const Text(
-            'Create Account',
-            style: TextStyle(
-              color: CColors.whiteColor,
-              fontSize: 16, // Slightly larger text
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 40,
+            height: 5,
+            margin: const EdgeInsets.symmetric(vertical: 12.0),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(10.0),
             ),
           ),
-        ),
-      ],
+          const Text(
+            'You Need an Account',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              'You need an account to access more features. Create your account now to unlock premium features.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          // Modern primary button
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: FilledButton(
+              onPressed: () {
+                _launchURL('https://caloriescounter.ai');
+              },
+              style: FilledButton.styleFrom(
+                minimumSize: const Size(double.infinity, 48),
+                backgroundColor: CColors.greenColor, // iOS blue color
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+              child: const Text(
+                'Create Account',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          // Modern secondary button
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: TextButton.styleFrom(
+              minimumSize: const Size(88, 40),
+              foregroundColor: Colors.grey[700],
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            ),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
-}
-
-
-/// Widget to show the "Create Account" popup dialog.
-void showCreateAccountDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return const CreateAccountDialog();
-    },
-  );
 }

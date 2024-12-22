@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: CColors.greenColor),
           useMaterial3: true,
-    
         ),
         home: const SplashScreen());
   }

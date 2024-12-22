@@ -28,7 +28,18 @@ class DashboardScreen extends StatelessWidget {
                                 fontSize: 26, fontWeight: FontWeight.bold)),
                         GestureDetector(
                           onTap: () {
-                            showCreateAccountDialog(context); 
+                            // Show the popup when the calendar text is tapped
+                        // Show the bottom sheet when the calendar text is tapped
+                        showModalBottomSheet(
+                          context: context,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16.0),
+                              topRight: Radius.circular(16.0),
+                            ),
+                          ),
+                          builder: (context) => const AccountRequiredBottomSheet(),
+                        );
                           },
                           child: const Text(
                             Const.calender,
@@ -54,6 +65,7 @@ class DashboardScreen extends StatelessWidget {
                 height: 10,
               ),
               const DaySelectorWidget(),
+              const SizedBox(height: 5),
               const DailyGoalWidget(),
               const SizedBox(
                 height: 10,
@@ -182,8 +194,8 @@ class _DaySelectorWidgetState extends State<DaySelectorWidget> {
                           child: Text(
                             dates[index].toString(),
                             style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black87,
                             ),
                           ),
