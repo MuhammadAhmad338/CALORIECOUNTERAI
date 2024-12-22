@@ -1,11 +1,9 @@
-import 'package:calorie_counter_ai/features/dashboard/View/dashboard.dart';
-import 'package:calorie_counter_ai/features/pickedimage/View/pickedimage.dart';
+import '../utils/const.dart';
 import 'package:get/get.dart';
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_counter_ai/features/pickimage/View/pickimage.dart';
-
-import '../utils/const.dart';
+import 'package:calorie_counter_ai/features/dashboard/View/dashboard.dart';
 
 class AddMealButton extends StatelessWidget {
   final String buttonText;

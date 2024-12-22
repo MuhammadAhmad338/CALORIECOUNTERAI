@@ -13,24 +13,29 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Padding(
-                  padding: EdgeInsets.only(left: 12, right: 12, top: 12),
+               Padding(
+                  padding:const  EdgeInsets.only(left: 12, right: 12, top: 12),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(Const.title,
+                        const Text(Const.title,
                             style: TextStyle(
                                 fontSize: 26, fontWeight: FontWeight.bold)),
-                        Text(
-                          Const.calender,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: CColors.greenColor,
+                        GestureDetector(
+                          onTap: () {
+                            showCreateAccountDialog(context); 
+                          },
+                          child: const Text(
+                            Const.calender,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CColors.greenColor,
+                            ),
                           ),
                         )
                       ])),
@@ -48,7 +53,7 @@ class DashboardScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              DaySelectorWidget(),
+              const DaySelectorWidget(),
               const DailyGoalWidget(),
               const SizedBox(
                 height: 10,
@@ -163,14 +168,14 @@ class _DaySelectorWidgetState extends State<DaySelectorWidget> {
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
-                      width: 36,
+                      width: 30,
                       height: 36,
                       child: CustomPaint(
                         painter: CircularProgressPainter(
                           progress: isSelected ? 0.6 : 1.0,
                           color: isSelected 
-                            ? const Color(0xFF4CAF50)  // Green color when selected
-                            : Colors.grey.withOpacity(0.3),
+                            ? CColors.greenColor  // Green color when selected
+                            : CColors.greyColor.withOpacity(0.03),
                           strokeWidth: 3,
                         ),
                         child: Center(
@@ -196,48 +201,6 @@ class _DaySelectorWidgetState extends State<DaySelectorWidget> {
   }
 }
 
-class CircularProgressPainter extends CustomPainter {
-  final double progress;
-  final Color color;
-  final double strokeWidth;
-
-  CircularProgressPainter({
-    required this.progress,
-    required this.color,
-    required this.strokeWidth,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = (size.width - strokeWidth) / 2;
-
-    // Draw white background circle
-    final bgPaint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(center, radius + strokeWidth / 2, bgPaint);
-
-    // Draw progress arc
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..strokeCap = StrokeCap.round;
-
-    final progressAngle = 2 * math.pi * progress;
-    canvas.drawArc(
-      Rect.fromCircle(center: center, radius: radius),
-      -math.pi / 2,  // Start from top
-      progressAngle,
-      false,
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
 
 
 
@@ -275,7 +238,7 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? CColors.greenColor.withOpacity(0.09)
-                      : Colors.grey.shade200,
+                      : CColors.greyColor.withOpacity(0.02),
                   borderRadius: BorderRadius.circular(32.0),
                   //border: isSelected
                   //    ? Border.all(color: CColors.greenColor, width: 2.0)
@@ -289,7 +252,7 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.bold,
-                        color: isSelected ? Colors.black : Colors.grey,
+                        color: isSelected ? CColors.blackColor : CColors.greyColor,
                       ),
                     ),
                     const SizedBox(height: 8.0),
@@ -297,8 +260,8 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
                         alignment: Alignment.center,
 
                       children: [
-                        Center(
-                          child: const CircularProgressIndicator(
+                        const Center(
+                          child:  CircularProgressIndicator(
                             color: CColors.greenColor,
                             strokeWidth: 4,
                             value: 0.8,
@@ -335,8 +298,8 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
                         alignment: Alignment.center,
 
                       children: [
-                        Center(
-                          child: const CircularProgressIndicator(
+                      const   Center(
+                          child:  CircularProgressIndicator(
                             color: CColors.greyColor,
                             strokeWidth: 4,
                             value: 0,
@@ -379,4 +342,48 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
       ),
     );
   }
+}
+
+
+class CircularProgressPainter extends CustomPainter {
+  final double progress;
+  final Color color;
+  final double strokeWidth;
+
+  CircularProgressPainter({
+    required this.progress,
+    required this.color,
+    required this.strokeWidth,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = (size.width - strokeWidth) / 2;
+
+    // Draw white background circle
+    final bgPaint = Paint()
+      ..color = CColors.whiteColor
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(center, radius + strokeWidth / 2, bgPaint);
+
+    // Draw progress arc
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth + 2.0 // Increase width by 4
+      ..strokeCap = StrokeCap.round;
+
+    final progressAngle = 2 * math.pi * progress;
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -math.pi / 2, // Start from top
+      progressAngle,
+      false,
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

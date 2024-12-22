@@ -89,29 +89,31 @@ class MealBannerWidget extends StatelessWidget {
 
           // Macronutrients
           const Padding(
-            padding: EdgeInsets.only(top: 6, bottom: 12),
-            child: Row(
+            padding: EdgeInsets.only(top: 12, bottom: 12),
+            child: Wrap(
+              spacing: 10, // Horizontal spacing between items
+              runSpacing: 5, // Vertical spacing between lines
               children: [
                 Text(
-                  'Πρωτεΐνες: 30g  ',
+                  'Πρωτεΐνες: 30g',
                   style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600),
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
                 ),
                 Text(
-                  'Υδατάνθρακες: 24g  ',
+                  'Υδατάνθρακες: 24g',
                   style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600),
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
                 ),
                 Text(
                   'Λιπαρά: 4,3g',
                   style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600),
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),

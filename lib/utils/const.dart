@@ -25,4 +25,8 @@ class Const {
   static const iconImage2 = "assets/read.png";
   static const iconImage1 = "assets/flash01.png";
 
+  static const refreshIconText = "Επανάληψη\nΦωτογραφίας";
+  static const refreshIconText1 = "Προσθήκη άλλου\nπιάτου γεύματος";
+  static const fontFamily = "Montserrat";
+
 }
