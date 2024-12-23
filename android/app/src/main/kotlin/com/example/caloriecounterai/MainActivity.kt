@@ -1,4 +1,4 @@
-package com.example.calorie_counter_ai
+package com.example.caloriecounterai
 
 import io.flutter.embedding.android.FlutterActivity
 

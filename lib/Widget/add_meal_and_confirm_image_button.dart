@@ -69,7 +69,7 @@ class TickCapturedImage extends StatelessWidget {
         onPressed: () {
           // Action when button is pressed
           // print("Add New Meal Button Pressed!");
-        Get.offAll(() =>  DashboardScreen());
+        Get.offAll(() => const  DashboardScreen());
         },
         icon:  Image.asset(
            Const.iconImage2, // Replace with your desired icons,

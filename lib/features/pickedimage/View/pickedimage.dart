@@ -1,10 +1,10 @@
 import 'dart:io';
+import '../../../utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:calorie_counter_ai/utils/const.dart';
 import 'package:calorie_counter_ai/Widget/nutrition_widget.dart';
 import 'package:calorie_counter_ai/Widget/meal_name_container.dart';
 import 'package:calorie_counter_ai/Widget/add_meal_and_confirm_image_button.dart';
-import '../../../utils/colors.dart';
 
 class PickedImageScreen extends StatelessWidget {
   final String imagePath;

@@ -23,22 +23,18 @@ class DailyGoalWidget extends StatelessWidget {
           Stack(
             alignment: Alignment.center,
             children: [
-              // Outer circular progress indicator
-
               // Circular progress
               Container(
                   width: 150.0, // Set the desired width (radius)
                   height: 150.0, // Set the desired height (radius)
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  child: CircularProgressIndicator(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                  child: const CircularProgressIndicator(
                     value: 1, // Progress value (260 out of 520)
                     strokeWidth: 20.0,
-                    color: const Color.fromARGB(255, 74, 181, 78),
-                    backgroundColor: Colors.grey.shade300,
+                    color:  CColors.greenColor,
+                    backgroundColor:  CColors.whiteColor,
                   )),
               // Center content
-
               const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

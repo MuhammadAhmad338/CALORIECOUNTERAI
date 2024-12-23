@@ -47,7 +47,7 @@ class PickImageScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           Const.iconImage1,
-                          color: Colors.white,
+                          color: CColors.whiteColor,
                           width: 27,
                           height: 27,
                         ),

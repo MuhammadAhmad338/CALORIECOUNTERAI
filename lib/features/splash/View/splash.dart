@@ -1,5 +1,7 @@
 import 'package:calorie_counter_ai/features/dashboard/View/dashboard.dart';
+import 'package:calorie_counter_ai/utils/const.dart';
 import 'package:flutter/material.dart';
+import '../../../utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,9 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
+      backgroundColor: CColors.whiteColor,
+      body: Center(
       child: Image.asset(
-        "assets/appicon.png",
+        Const.splashImage,
         height: 200,
         width: 200,
       ),

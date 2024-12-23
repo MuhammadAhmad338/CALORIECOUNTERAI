@@ -14,6 +14,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: CColors.whiteColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -173,30 +174,30 @@ class _DaySelectorWidgetState extends State<DaySelectorWidget> {
                       days[index],
                       style: const TextStyle(
                         fontSize: 13,
-                        color: Colors.black54,
+                        color: CColors.blackColor,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.5,
                       ),
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
-                      width: 30,
+                      width: 36,
                       height: 36,
                       child: CustomPaint(
                         painter: CircularProgressPainter(
                           progress: isSelected ? 0.6 : 1.0,
                           color: isSelected 
                             ? CColors.greenColor  // Green color when selected
-                            : CColors.greyColor.withOpacity(0.03),
+                            : Colors.grey.withOpacity(0.3),
                           strokeWidth: 3,
                         ),
                         child: Center(
                           child: Text(
                             dates[index].toString(),
                             style: const TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color:CColors.blackColor,
                             ),
                           ),
                         ),
@@ -213,7 +214,49 @@ class _DaySelectorWidgetState extends State<DaySelectorWidget> {
   }
 }
 
+class CircularProgressPainter extends CustomPainter {
+  final double progress;
+  final Color color;
+  final double strokeWidth;
 
+  CircularProgressPainter({
+    required this.progress,
+    required this.color,
+    required this.strokeWidth,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = (size.width - strokeWidth) / 2;
+
+    // Draw white background circle
+    final bgPaint = Paint()
+      ..color = CColors.whiteColor
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(center, radius + strokeWidth / 2, bgPaint);
+
+   // Draw progress arc
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth + 2.0 // Increase width by 4
+      ..strokeCap = StrokeCap.round;
+  
+
+    final progressAngle = 2 * math.pi * progress;
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -math.pi / 2,  // Start from top
+      progressAngle,
+      false,
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
 
 
 class WeeklyCalendar extends StatefulWidget {
@@ -357,45 +400,45 @@ class _WeeklyCalendarState extends State<WeeklyCalendar> {
 }
 
 
-class CircularProgressPainter extends CustomPainter {
-  final double progress;
-  final Color color;
-  final double strokeWidth;
+// class CircularProgressPainter extends CustomPainter {
+//   final double progress;
+//   final Color color;
+//   final double strokeWidth;
 
-  CircularProgressPainter({
-    required this.progress,
-    required this.color,
-    required this.strokeWidth,
-  });
+//   CircularProgressPainter({
+//     required this.progress,
+//     required this.color,
+//     required this.strokeWidth,
+//   });
 
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = (size.width - strokeWidth) / 2;
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     final center = Offset(size.width / 2, size.height / 2);
+//     final radius = (size.width - strokeWidth) / 2;
 
-    // Draw white background circle
-    final bgPaint = Paint()
-      ..color = CColors.whiteColor
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(center, radius + strokeWidth / 2, bgPaint);
+//     // Draw white background circle
+//     final bgPaint = Paint()
+//       ..color = CColors.whiteColor
+//       ..style = PaintingStyle.fill;
+//     canvas.drawCircle(center, radius + strokeWidth / 2, bgPaint);
 
-    // Draw progress arc
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth + 2.0 // Increase width by 4
-      ..strokeCap = StrokeCap.round;
+//     // Draw progress arc
+//     final paint = Paint()
+//       ..color = color
+//       ..style = PaintingStyle.stroke
+//       ..strokeWidth = strokeWidth + 2.0 // Increase width by 4
+//       ..strokeCap = StrokeCap.round;
 
-    final progressAngle = 2 * math.pi * progress;
-    canvas.drawArc(
-      Rect.fromCircle(center: center, radius: radius),
-      -math.pi / 2, // Start from top
-      progressAngle,
-      false,
-      paint,
-    );
-  }
+//     final progressAngle = 2 * math.pi * progress;
+//     canvas.drawArc(
+//       Rect.fromCircle(center: center, radius: radius),
+//       -math.pi / 2, // Start from top
+//       progressAngle,
+//       false,
+//       paint,
+//     );
+//   }
 
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
+//   @override
+//   bool shouldRepaint(CustomPainter oldDelegate) => true;
+// }

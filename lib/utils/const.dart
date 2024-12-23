@@ -22,11 +22,14 @@ class Const {
   static const mealContainerText1 = "Όνομα φαγητού";
   static const mealContainerText2 = "Αυγά";
   static const premiumBanner = "Αναβαθμίστε σε Premium και\nκαταγράψτε καθημερινά τα γεύματά σας!";
-  static const iconImage2 = "assets/read.png";
-  static const iconImage1 = "assets/flash01.png";
+  
 
   static const refreshIconText = "Επανάληψη\nΦωτογραφίας";
   static const refreshIconText1 = "Προσθήκη άλλου\nπιάτου γεύματος";
   static const fontFamily = "Montserrat";
+
+  static const splashImage = "assets/icons/calorieapppng.png";
+  static const iconImage2 = "assets/icons/read.png";
+  static const iconImage1 = "assets/icons/flash01.png";
 
 }

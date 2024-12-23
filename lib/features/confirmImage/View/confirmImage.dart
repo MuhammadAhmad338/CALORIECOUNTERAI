@@ -80,8 +80,7 @@ class BarcodeCapturedImage extends StatelessWidget {
   final String buttonText;
   final String imagePath;
   const BarcodeCapturedImage(
-      {Key? key, required this.buttonText, required this.imagePath})
-      : super(key: key);
+      {super.key, required this.buttonText, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +125,7 @@ class BarcodeCapturedImage extends StatelessWidget {
 class InfoBanner extends StatelessWidget {
   final String message;
 
-  const InfoBanner({Key? key, required this.message}) : super(key: key);
+  const InfoBanner({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -167,11 +166,11 @@ class IconTextButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const IconTextButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -218,18 +217,16 @@ class ActionsRow extends StatelessWidget {
         IconTextButton(
           icon: Icons.refresh,
           text: Const.refreshIconText,
-          onPressed: () {
+          onPressed: () =>
             // Add your logic here
-            Get.off(() => const PickImageScreen());
-          },
+            Get.off(() => const PickImageScreen())
         ),
         IconTextButton(
           icon: Icons.add_circle_outline,
           text: Const.refreshIconText1,
-          onPressed: () {
+          onPressed: () =>
             // Add your logic here
-            Get.off(() => const PickImageScreen());
-          },
+            Get.off(() => const PickImageScreen())
         ),
       ],
     );

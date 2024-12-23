@@ -43,7 +43,7 @@ class PremiumBanner extends StatelessWidget {
 }
 
 class AccountRequiredBottomSheet extends StatelessWidget {
-  const AccountRequiredBottomSheet({Key? key}) : super(key: key);
+  const AccountRequiredBottomSheet({super.key});
 
   void _launchURL(String url) async {
     final uri = Uri.parse(url);
@@ -92,7 +92,7 @@ class AccountRequiredBottomSheet extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14.0,
-                color: Colors.grey,
+                color:CColors.greyColor,
               ),
             ),
           ),
@@ -117,7 +117,7 @@ class AccountRequiredBottomSheet extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w500,
-                  color: Colors.white,
+                  color:CColors.whiteColor,
                 ),
               ),
             ),
